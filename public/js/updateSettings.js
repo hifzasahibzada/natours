@@ -10,8 +10,8 @@ export const updateSettings = async (data, type) => { // MODIFIED: Function sign
   try {
     const url = // NEW: Ternary operator for URL based on type
       type === 'password'
-        ? 'http://127.0.0.1:3000/api/v1/users/updateMyPassword' // For password updates
-        : 'http://127.0.0.1:3000/api/v1/users/updateMe'; // For data updates
+        ? '/api/v1/users/updateMyPassword' // For password updates
+        : '/api/v1/users/updateMe'; // For data updates
 
     const res = await axios({
       method: 'PATCH', // MODIFIED: Method is PATCH for both

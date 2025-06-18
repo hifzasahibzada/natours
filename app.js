@@ -8,6 +8,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser'); // For parsing cookies
+const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -88,6 +89,8 @@ app.use(
   })
 );
 
+app.use(compression());
+
 // Add current user to response locals (if you have this middleware)
 // app.use((req, res, next) => {
 //   // Example: if you have an authentication system, you might set res.locals.user here
@@ -97,13 +100,13 @@ app.use(
 
 // Test middleware (your custom logger)
 app.use((req, res, next) => {
-  console.log(`--- Incoming Request (app.js level) ---`);
-  console.log(`Method: ${req.method}, URL: ${req.originalUrl}`);
+  //console.log(`--- Incoming Request (app.js level) ---`);
+  //console.log(`Method: ${req.method}, URL: ${req.originalUrl}`);
   // console.log(`Headers:`, req.headers); // Can be very verbose
   if (req.method === 'POST') {
-    console.log(`Body (app.js level):`, req.body);
+    //console.log(`Body (app.js level):`, req.body);
   }
-  console.log(`Cookies:`, req.cookies); // Log cookies if present
+  //console.log(`Cookies:`, req.cookies); // Log cookies if present
   next();
 });
 
@@ -120,8 +123,8 @@ app.use('/api/v1/bookings', bookingRouter);
 
 // Handles all unhandled routes (404s)
 app.all('*', (req, res, next) => {
-  console.log(`--- Unhandled Request (app.js all-catch) ---`);
-  console.log(`Method: ${req.method}, URL: ${req.originalUrl}`);
+  //console.log(`--- Unhandled Request (app.js all-catch) ---`);
+  //console.log(`Method: ${req.method}, URL: ${req.originalUrl}`);
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
