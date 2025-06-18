@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(href='https://fonts.googleapis.com/css?family=Lato:300,300i,700', rel='stylesheet')
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='shortcut icon', type='image/png', href='/img/favicon.png')
+    title Natours | #{title}
+    block head
+
+  body
+    // Include the separate header partial
+    include _header
+
+    block content
+
+    footer.footer
+      .footer__logo
+        img(src='/img/logo-green.png', alt='Natours logo')
+      ul.footer__nav
+        li: a(href='#') About us
+        li: a(href='#') Download apps
+        li: a(href='#') Become a guide
+        li: a(href='#') Careers
+        li: a(href='#') Contact
+      p.footer__copyright &copy; by Hifza Sahibzada. All rights reserved.
+
+    //- Stripe JS moved here from tour.pug to be globally available
+    script(src='https://js.stripe.com/v3/') 
+    script(src='/js/bundle.js') 

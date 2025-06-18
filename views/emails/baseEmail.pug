@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width')
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    link(href='https://fonts.googleapis.com/css?family=Lato:300,300i,700', rel='stylesheet')
+    title= subject
+
+    //- Include the inline styles
+    include _style
+
+  body
+    table.body(role='presentation', border='0', cellpadding='0', cellspacing='0')
+      tbody
+        tr
+          td
+          td.container
+            .content
+              // START CENTERED WHITE CONTAINER
+              table.main(role='presentation')
+
+                // START HEADER
+                tbody
+                  tr
+                    td.wrapper
+                      table.header(role='presentation') 
+                        tbody
+                          tr
+                            td
+
+                // START MAIN AREA
+                tbody
+                  tr
+                    td.wrapper
+                      table.main-content(role='presentation') 
+                        tbody
+                          tr
+                            td.content-wrap 
+                              block content 
+
+              // START FOOTER
+              .footer
+                table(role='presentation', border='0', cellpadding='0', cellspacing='0')
+                  tbody
+                    tr
+                      td.content-block
+                        // The address and unsubscribe link can be static or dynamic
+                        span.apple-link Natours Inc, 123 Nowhere Road, San Francisco CA 99999
+                        br
+                        |  Don't like these emails?
+                        a(href='#') Unsubscribe
+                    tr
+                      td.content-block
+                        // Example copyright, adjust year if needed
+                        | &copy; #{new Date().getFullYear()} Natours. All rights reserved.
+          td
