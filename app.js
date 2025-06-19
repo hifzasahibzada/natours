@@ -9,6 +9,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser'); // For parsing cookies
 const compression = require('compression');
+const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -25,6 +26,10 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views')); // Assuming your Pug templates are in a 'views' folder
 
 // 1) GLOBAL MIDDLEWARES
+//Implement CORS 
+app.use(cors());
+
+app.options('*', cors());
 
 // Serving static files (CSS, JS, images from 'public' folder)
 // Make sure your login.html is in your 'public' folder, at the project root level.
