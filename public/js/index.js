@@ -4,6 +4,7 @@ import { login, logout } from './login';
 import { displayMap } from './mapbox';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe'; 
+import { showAlert } from './alert';
 
 // DOM elements
 const mapBox = document.getElementById('map');
@@ -90,3 +91,8 @@ if (bookBtn) {
     bookTour(tourId);
   });
 }
+
+/*//For Stripe implementation
+// Alert message display (ADD THIS BLOCK)
+const alertMessage = document.querySelector('body').dataset.alert;
+if (alertMessage) showAlert('success', alertMessage, 20); // Show for 20 seconds*/

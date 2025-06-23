@@ -63,10 +63,6 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
 const createBookingCheckout = async session => {
   const tour = session.client_reference_id;
   const user = (await User.findOne({ email: session.customer_email })).id;
-  // NOTE: The lecture states session.line_items[0].amount.
-  // However, in newer Stripe versions, it's often session.amount_total or line_items[0].price.unit_amount
-  // Sticking to lecture: line_items[0].amount
-  // Correction: The lecture later corrects this to display_items.
   const price = session.line_items[0].amount / 100; // Corrected from 'display_items' to 'line_items' based on the final working code in lecture
 
   await Booking.create({ tour, user, price });

@@ -9,7 +9,7 @@ html
     title Natours | #{title}
     block head
 
-  body
+  body(data-alert=`${alert ? alert : ''}`)
     // Include the separate header partial
     include _header
 
